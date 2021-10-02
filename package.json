@@ -1,0 +1,33 @@
+{
+    "name": "vasmoldstyle",
+    "version": "0.0.1",
+    "publiser": "Toeffe3",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "displayName": "Assembler (VASM oldstyle)",
+    "description": "Assembler code syntax for VASM oldstyle",
+    "categories": [
+        "Programming Languages"
+    ],
+    "keywords": [
+        "Assembler", 
+        "VASM Oldstyle",
+        "6502",
+        ".s",
+        ".asm"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "asm",
+            "aliases": ["Assembler", "assembler", "asm"],
+            "extensions": [".s .asm .6502"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "asm",
+            "scopeName": "text.vasm.oldstyle.asm",
+            "path": "./syntaxes/asm.tmLanguage.json"
+        }]
+    }
+}
