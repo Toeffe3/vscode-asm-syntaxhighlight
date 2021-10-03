@@ -6,9 +6,10 @@
         "vscode": "^1.60.0"
     },
     "displayName": "Assembler (VASM oldstyle)",
-    "description": "Assembler code syntax for VASM oldstyle",
+    "description": "Assembler code syntax and highlight for VASM oldstyle",
     "categories": [
-        "Programming Languages"
+        "Programming Languages",
+        "Themes"
     ],
     "keywords": [
         "Assembler", 
@@ -17,6 +18,11 @@
         ".s",
         ".asm"
     ],
+    "configurationDefaults": {
+        "[asm]": {
+            "editor.semanticHighlighting.enabled": true
+        }
+    },
     "contributes": {
         "languages": [{
             "id": "asm",
@@ -28,6 +34,11 @@
             "language": "asm",
             "scopeName": "text.vasm.oldstyle.asm",
             "path": "./syntaxes/asm.tmLanguage.json"
+        }],
+        "themes": [{
+            "label": "VASM (oldstyle)",
+            "uiTheme": "vs-dark",
+            "path": "./themes/asm-color-theme.json"
         }]
     }
 }

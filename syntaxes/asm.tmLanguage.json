@@ -4,88 +4,43 @@
 	"foldingStartMarker": "^.+\\:$",
 	"foldingStopMarker": "^!(  |\\\t)$",
 	"patterns": [
+		{ "include": "#comment" },
 		{ "include": "#label" },
-		{ "include": "#nonlabel" },
-		{ "include": "#comment" }
+		{ "include": "#vasm" },
+		{ "include": "#instructions" }
 	],
 	"repository": {
-		"label": {
-			"patterns": [{
-				"name": "label.asm",
-				"match": "^(.+\\:)|(.+ macro)"
-			}]
-		},
-		"nonlabel": {
-			"begin": "^(  )|\\\t",
-			"end": "^\\1$",
-			"patterns": [
-				{ "include": "#instruction" },
-				{ "include": "#org" }
-			]
-		},
-		"instruction": {
-			"name": "instructiuon.asm",
-			"patterns": [
-				{ "include": "#immediate" },
-				{ "include": "#address" }
-			]
-		},
-		"org": {
-			"name": "directives.asm",
-			"patterns": [
-				{
-					"name": "constant.character.escape.asm",
-					"match": "\\\\."
-				}
-			]
-		},
+
 		"comment": {
-			"name": "directives.asm",
-			"begin": ";.*",
-			"end": "^\\1$"
+			"name": "comment.line",
+			"match": ";.*$"
 		},
-		"address": {
-			"name": "address.asm",
-			"patterns": [
-				{ "include": "#binary" },
-				{ "include": "#octal" },
-				{ "include": "#hex" },
-				{ "include": "#decimal" }
-			]
+		
+		"label": {
+			"name": "label.asm",
+			"match": "^(\\S[a-z_\\-]*):\\s(?:(asciiz?) (\".*?\"))?",
+			"captures": {
+				"1": { "name": "reference.label.asm" },
+				"2": { "name": "syntax.vasm"},
+				"3": { "name": "string.asm" }
+			}
 		},
-		"immediate": {
-			"name": "immediate.asm",
-			"begin": "#",
-			"end": ",|^\\1$",
-			"patterns": [
-				{ "include": "#binary" },
-				{ "include": "#octal" },
-				{ "include": "#hex" },
-				{ "include": "#decimal" }
-			]
+		
+		"vasm": {
+			"name": "syntax.vasm",
+			"match": "^  .{0,1}(?:(org)|(word)|(include)|(incdir))"
 		},
-		"hex": {
-			"name": "hexidecimal.value.asm",
-			"begin": "$|0x",
-			"match": "([0-F]{2})+"
-		},
-		"octal": {
-			"name": "octal.value.asm",
-			"begin": "Ox",
-			"match": "[0-8]{1-3}"
-		},
-		"binary": {
-			"name": "binary.value.asm",
-			"begin": "%|0b",
-			"match":	"([01]{8})+"
-		},
-		"decimal": {
-			"name": "decimal.value.asm",
-			"match": "\\d{1,3}"
-		},
-		"reference": {
-			"name": "labelref.value.asm",
-			"match": "A-z([A-z]\\_\\-)+"
+
+		"instructions": {
+			"name": "instruction.asm",
+			"match": "^  ([a-z]{3})\\s(?:([^;]*))?",
+			"captures": {
+				"1": { "name": "instructionname.asm" },
+				"2": {
+					"name": "parameter.asm",
+					"patterns": [{ "match": "(.*,?)+" }]
+				}
+			}
 		}
 	}
 }

@@ -10,7 +10,8 @@
             "type": "extensionHost",
             "request": "launch",
             "args": [
-                "--extensionDevelopmentPath=${workspaceFolder}"
+                "--extensionDevelopmentPath=${workspaceFolder}",
+                "F:\\OneDrive\\Skrivebord\\6502\\helloworld.s"
             ]
         }
     ]
