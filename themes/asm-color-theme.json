@@ -1,0 +1,102 @@
+{
+	"name": "VASM (oldstyle)",
+	"type": "dark",
+	"colors": {
+		"editor.background": "#263238",
+		"editor.foreground": "#eeffff",
+		"activityBarBadge.background": "#007acc",
+		"sideBarTitle.foreground": "#bbbbbb"
+	},
+	"tokenColors": [
+		{
+			"name": "Comment",
+			"scope": [
+				"comment",
+				"punctuation.definition.comment"
+			],
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#546E7A"
+			}
+		},
+		{
+			"name": "Value",
+			"scope": [
+				"parameter.asm"
+			],
+			"settings": {
+				"foreground": "#ff9100",
+				"fontStyle": "italic",
+			}
+		},
+		{
+			"name": "Address",
+			"scope": [
+				"address.asm",
+			],
+			"settings": {
+				"foreground": "#f0ec00",
+				"fontStyle": "bold underline"
+			}
+		},
+		{
+			"name": "Instruction",
+			"scope": [
+				"instructionname.asm",
+			],
+			"settings": {
+				"foreground": "#00a71c",
+				"fontStyle": "bold italic"
+			}
+		},
+		{
+			"name": "Invalid",
+			"scope": [
+				"invalid",
+				"invalid.illegal"
+			],
+			"settings": {
+				"foreground": "#FF5370"
+			}
+		},
+		{
+			"name": "Directives",
+			"scope": [
+				"directives.asm"
+			],
+			"settings": {
+				"foreground": "#C792EA",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Label",
+			"scope": [
+				"reference.label.asm"
+			],
+			"settings": {
+				"foreground": "#cc00ff",
+				"fontStyle": "italic underline"
+			}
+		},
+		{
+			"name": "String",
+			"scope": [
+				"string.asm"
+			],
+			"settings": {
+				"foreground": "#3ee2ff"
+			}
+		},
+		{
+			"name": "VASM",
+			"scope": [
+				"syntax.vasm"
+			],
+			"settings": {
+				"foreground": "#ffb4ec",
+				"fontStyle": "bold"
+			}
+		}
+	]
+}
