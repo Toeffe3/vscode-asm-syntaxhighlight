@@ -1,4 +1,6 @@
 {
+	"semanticHighlighting": true,
+	"semanticTokenColors": {},
 	"name": "VASM (oldstyle)",
 	"type": "dark",
 	"colors": {
@@ -22,7 +24,10 @@
 		{
 			"name": "Value",
 			"scope": [
-				"parameter.asm"
+				"constant.numeric.hex",
+				"constant.numeric.octal",
+				"constant.numeric.binary",
+				"constant.numeric.decimal",
 			],
 			"settings": {
 				"foreground": "#ff9100",
@@ -65,14 +70,14 @@
 				"directives.asm"
 			],
 			"settings": {
-				"foreground": "#C792EA",
+				"foreground": "#ffb4ec",
 				"fontStyle": "bold"
 			}
 		},
 		{
 			"name": "Label",
 			"scope": [
-				"reference.label.asm"
+				"reference.label.asm",
 			],
 			"settings": {
 				"foreground": "#cc00ff",
@@ -80,22 +85,31 @@
 			}
 		},
 		{
+			"name": "Definitions",
+			"scope": [
+				"reference.constant.asm",
+				"reference.macro.asm",
+			],
+			"settings": {
+				"foreground": "#cc00ff"
+			}
+		},
+		{
 			"name": "String",
 			"scope": [
-				"string.asm"
+				"string.quoted"
 			],
 			"settings": {
 				"foreground": "#3ee2ff"
 			}
 		},
 		{
-			"name": "VASM",
+			"name": "Imidiate",
 			"scope": [
-				"syntax.vasm"
+				"constant.other"
 			],
 			"settings": {
-				"foreground": "#ffb4ec",
-				"fontStyle": "bold"
+				"foreground": "#FF0000",
 			}
 		}
 	]
