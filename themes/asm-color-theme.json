@@ -22,6 +22,16 @@
 			}
 		},
 		{
+			"name": "Imidiate",
+			"scope": [
+				"imidiate.asm",
+			],
+			"settings": {
+				"foreground": "#a3a000",
+				"fontStyle": "italic",
+			}
+		},
+		{
 			"name": "Value",
 			"scope": [
 				"constant.numeric.hex",
@@ -30,8 +40,7 @@
 				"constant.numeric.decimal",
 			],
 			"settings": {
-				"foreground": "#ff9100",
-				"fontStyle": "italic",
+				"foreground": "#f0ec00"
 			}
 		},
 		{
@@ -40,8 +49,8 @@
 				"address.asm",
 			],
 			"settings": {
-				"foreground": "#f0ec00",
-				"fontStyle": "bold underline"
+				"foreground": "#ff9100",
+				"fontStyle": "underline"
 			}
 		},
 		{
@@ -50,8 +59,18 @@
 				"instructionname.asm",
 			],
 			"settings": {
-				"foreground": "#00a71c",
+				"foreground": "#0077ff",
 				"fontStyle": "bold italic"
+			}
+		},
+		{
+			"name": "Userdefined",
+			"scope": [
+				"userdefined.asm",
+			],
+			"settings": {
+				"foreground": "#84edff",
+				"fontStyle": "italic"
 			}
 		},
 		{
@@ -75,9 +94,19 @@
 			}
 		},
 		{
+			"name": "VariablePreProcessor",
+			"scope": [
+				"variable.pp"
+			],
+			"settings": {
+				"foreground": "#ffb4ec",
+			}
+		},
+		{
 			"name": "Label",
 			"scope": [
 				"reference.label.asm",
+				"storage"
 			],
 			"settings": {
 				"foreground": "#cc00ff",
@@ -97,10 +126,11 @@
 		{
 			"name": "String",
 			"scope": [
-				"string.quoted"
+				"string.quoted",
+				"string.path"
 			],
 			"settings": {
-				"foreground": "#3ee2ff"
+				"foreground": "#00a71c"
 			}
 		},
 		{
