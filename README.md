@@ -1,4 +1,4 @@
-# vasm-oldstyle README
+# vscode-asm-syntaxhighlight
 
 Write assembler with proper syntax highlighting.
 
@@ -33,6 +33,9 @@ None yet
 This is a bare bone extension in its current state, many features still lack and bugs is likly to appere. Please check issues tab in the GitHub repository.
 
 ## Release Notes
+
+### [released] ALPHA 0.2.2
+* Same as 0.2.1
 
 ### [available] 0.2.1
 * No optimazation
