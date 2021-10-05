@@ -1,6 +1,6 @@
 {
     "name": "asm-syntaxhighlight",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "publisher": "Toeffe3",
     "repository": { "url": "https://github.com/Toeffe3/vscode-vasm-oldstyle" },
     "engines": {
