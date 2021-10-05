@@ -22,9 +22,9 @@
 			}
 		},
 		{
-			"name": "Imidiate",
+			"name": "Immediate",
 			"scope": [
-				"imidiate.asm",
+				"immediate.asm",
 			],
 			"settings": {
 				"foreground": "#a3a000",
