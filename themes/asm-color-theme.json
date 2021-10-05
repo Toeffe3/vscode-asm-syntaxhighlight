@@ -49,7 +49,7 @@
 				"address.asm",
 			],
 			"settings": {
-				"foreground": "#ff9100",
+				"foreground": "#ffae00",
 				"fontStyle": "underline"
 			}
 		},
@@ -59,7 +59,7 @@
 				"instructionname.asm",
 			],
 			"settings": {
-				"foreground": "#0077ff",
+				"foreground": "#cc00ff",
 				"fontStyle": "bold italic"
 			}
 		},
@@ -69,18 +69,8 @@
 				"userdefined.asm",
 			],
 			"settings": {
-				"foreground": "#84edff",
+				"foreground": "#ff00dd",
 				"fontStyle": "italic"
-			}
-		},
-		{
-			"name": "Invalid",
-			"scope": [
-				"invalid",
-				"invalid.illegal"
-			],
-			"settings": {
-				"foreground": "#FF5370"
 			}
 		},
 		{
@@ -89,7 +79,7 @@
 				"directives.asm"
 			],
 			"settings": {
-				"foreground": "#ffb4ec",
+				"foreground": "#7dffa8",
 				"fontStyle": "bold"
 			}
 		},
@@ -99,7 +89,7 @@
 				"variable.pp"
 			],
 			"settings": {
-				"foreground": "#ffb4ec",
+				"foreground": "#89fad8",
 			}
 		},
 		{
@@ -109,7 +99,7 @@
 				"storage"
 			],
 			"settings": {
-				"foreground": "#cc00ff",
+				"foreground": "#4ac6ff",
 				"fontStyle": "italic underline"
 			}
 		},
@@ -117,29 +107,29 @@
 			"name": "Definitions",
 			"scope": [
 				"reference.constant.asm",
-				"reference.macro.asm",
+				"reference.macro.asm"
 			],
 			"settings": {
-				"foreground": "#cc00ff"
+				"foreground": "#4ac6ff"
 			}
 		},
 		{
 			"name": "String",
 			"scope": [
 				"string.quoted",
-				"string.path"
 			],
 			"settings": {
 				"foreground": "#00a71c"
 			}
 		},
 		{
-			"name": "Imidiate",
+			"name": "Path",
 			"scope": [
-				"constant.other"
+				"string.path"
 			],
 			"settings": {
-				"foreground": "#FF0000",
+				"foreground": "#fd73d4",
+				"fontStyle": "underline"
 			}
 		}
 	]
