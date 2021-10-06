@@ -34,6 +34,19 @@ This is a bare bone extension in its current state, many features still lack and
 
 ## Release Notes
 
+
+### [released] ALPHA 0.2.3
+
+* Numbers in labels
+* Tabs and spaces supported everywhere
+* Syntax scopes guided inline with more general scopes - improving compatibility with existing themes
+
+For convenience
+
+* ALL CAPS matches constant scope
+* all lowercase matches volatile memory address scope
+
+
 ### [released] ALPHA 0.2.2
 * Same as 0.2.1
 
