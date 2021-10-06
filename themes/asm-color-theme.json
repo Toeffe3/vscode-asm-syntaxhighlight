@@ -1,20 +1,10 @@
 {
-	"semanticHighlighting": true,
-	"semanticTokenColors": {},
-	"name": "VASM (oldstyle)",
-	"type": "dark",
-	"colors": {
-		"editor.background": "#263238",
-		"editor.foreground": "#eeffff",
-		"activityBarBadge.background": "#007acc",
-		"sideBarTitle.foreground": "#bbbbbb"
-	},
+	"name": "Assembler",
 	"tokenColors": [
 		{
 			"name": "Comment",
 			"scope": [
-				"comment",
-				"punctuation.definition.comment"
+				"comment.line.semi-colon"
 			],
 			"settings": {
 				"fontStyle": "italic",
@@ -46,7 +36,7 @@
 		{
 			"name": "Address",
 			"scope": [
-				"address.asm",
+				"entity.name.section"
 			],
 			"settings": {
 				"foreground": "#ffae00",
@@ -56,7 +46,7 @@
 		{
 			"name": "Instruction",
 			"scope": [
-				"instructionname.asm",
+				"support.function"
 			],
 			"settings": {
 				"foreground": "#cc00ff",
@@ -66,7 +56,7 @@
 		{
 			"name": "Userdefined",
 			"scope": [
-				"userdefined.asm",
+				"meta.tag",
 			],
 			"settings": {
 				"foreground": "#ff00dd",
@@ -76,7 +66,7 @@
 		{
 			"name": "Directives",
 			"scope": [
-				"directives.asm"
+				"meta.preprocessor"
 			],
 			"settings": {
 				"foreground": "#7dffa8",
@@ -86,7 +76,7 @@
 		{
 			"name": "VariablePreProcessor",
 			"scope": [
-				"variable.pp"
+				"meta.parameter.type.variable"
 			],
 			"settings": {
 				"foreground": "#89fad8",
@@ -95,8 +85,8 @@
 		{
 			"name": "Label",
 			"scope": [
-				"reference.label.asm",
-				"storage"
+				"meta.label",
+				"meta.storage.label"
 			],
 			"settings": {
 				"foreground": "#4ac6ff",
@@ -106,8 +96,10 @@
 		{
 			"name": "Definitions",
 			"scope": [
-				"reference.constant.asm",
-				"reference.macro.asm"
+				"constant",
+				"constant.asm",
+				"address.asm",
+				"meta.constant"
 			],
 			"settings": {
 				"foreground": "#4ac6ff"
