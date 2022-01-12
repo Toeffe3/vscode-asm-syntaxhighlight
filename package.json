@@ -30,7 +30,7 @@
         "languages": [{
             "id": "asm",
             "aliases": ["Assembler", "assembler", "asm"],
-            "extensions": [".s .asm .6502"],
+            "extensions": [".s", ".asm", ".6502"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
@@ -39,6 +39,7 @@
             "path": "./syntaxes/asm.tmLanguage.json"
         }],
         "themes": [{
+            "uiTheme": "vs-dark",
             "label": "VASM (oldstyle)",
             "path": "./themes/asm-color-theme.json"
         }],
