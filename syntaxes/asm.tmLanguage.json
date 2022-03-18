@@ -81,7 +81,11 @@
 					"patterns": [
 						{
 							"name": "string.path",
-							"match": "[\\/0-9A-z_\\-]+(\\.[0-9A-z]+|\\/)"
+							"match": "([A-Z]\\:/)?([A-z0-9_ ]*/)+"
+						},
+						{
+							"name": "string.path.file",
+							"match": "([A-z0-9_ ]+\\.[A-z0-9]+)"
 						},
 						{
 							"name": "meta.parameter.type.variable",
