@@ -1,0 +1,34 @@
+{
+  "New project": {
+    "prefix": ["Templates", ";New project"],
+    "body": ["\tincdir lib/\r\rrst:\r\t;Run once on reset\r\rloop:\r\t;Run continuously\r\tjmp loop\r\rirq:\r\trti\r\rnmi:\r\trti\r\r\torg \\$fffa\r\tword ${1:nmi}\t;Non-maskable interrupt vector\r\tword ${2:rst}\t;Reset interrupt vector\r\tword ${3:irq}\t;Interrupt request vector"],
+    "description": "Project template for new file"
+  },
+  "Setup stack": {
+    "prefix": ["Templates", ";Setup stack"],
+    "body": [";Setup stack\r\tldx #\\$ff\r\ttxs\r"],
+    "description": "Setup the stack"
+  },
+  "(MACRO) Setup stack": {
+    "prefix": ["Templates", ";Setup stack macro"],
+    "body": [";Setup stack\r${1:init_stack} macro\r\tldx #\\$ff\r\ttxs\r\tendmacro\r"],
+    "description": "Macro for setting up the stack"
+  },
+
+  "intvector": {
+    "prefix": ["Templates", ";Setup interrupt table"],
+    "body": [";Setup interrupt table\r\torg \\$fffa\r\tword ${1:nmi}\t;Non-maskable interrupt vector\r\tword ${2:rst}\t;Reset interrupt vector\r\tword ${3:irq}\t;Interrupt request vector"],
+    "description": "Setup interrupt vectors"
+  },
+
+  "infloop": {
+    "prefix": ["do ... while (1);", "while (1);"],
+    "body": ["${1:loop}:\r\t;Loop forever\r\tnop\r\tjmp ${1:loop}"],
+    "description": "Infinite loop"
+  },
+  "itrloop": {
+    "prefix": ["do ... while (--x > 0);", "while (--x > 0);"],
+    "body": ["${1:loop}:\r\tdex\r\tbne ${1:loop}"],
+    "description": "Iterative loop"
+  }
+}
