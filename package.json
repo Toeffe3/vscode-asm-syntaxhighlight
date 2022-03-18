@@ -12,7 +12,8 @@
     },
     "categories": [
         "Programming Languages",
-        "Themes"
+        "Themes",
+        "Snippets"
     ],
     "keywords": [
         "Assembler", 
@@ -41,7 +42,11 @@
         "themes": [{
             "uiTheme": "vs-dark",
             "label": "VASM (oldstyle)",
-            "path": "./themes/asm-color-theme.json"
+            "path": "./themes/asm.json"
+        }],
+        "snippets": [{
+            "language": "asm",
+            "path": "./snippets/6502.json"
         }],
         "configuration": [{
             "properties": {
