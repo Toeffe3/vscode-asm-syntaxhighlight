@@ -37,12 +37,12 @@
         "grammars": [{
             "language": "asm",
             "scopeName": "source.asm",
-            "path": "./syntaxes/asm.tmLanguage.json"
+            "path": "./syntaxes/vasm.oldstyle.tmLanguage.json"
         }],
         "themes": [{
             "uiTheme": "vs-dark",
             "label": "VASM (oldstyle)",
-            "path": "./themes/asm.json"
+            "path": "./themes/vasm.oldstyle.theme.json"
         }],
         "snippets": [{
             "language": "asm",
