@@ -1,6 +1,6 @@
 {
     "name": "asm-syntaxhighlight",
-    "version": "0.2.4",
+    "version": "0.3.0",
     "preview": true,
     "publisher": "Toeffe3",
     "homepage": "https://github.com/Toeffe3/vscode-asm-syntaxhighlight",
@@ -37,20 +37,58 @@
         "grammars": [{
             "language": "asm",
             "scopeName": "source.asm",
-            "path": "./syntaxes/asm.tmLanguage.json"
+            "path": "./syntaxes/vasm.oldstyle.tmLanguage.json"
         }],
         "themes": [{
             "uiTheme": "vs-dark",
             "label": "VASM (oldstyle)",
-            "path": "./themes/asm.json"
+            "path": "./themes/vasm.oldstyle.theme.json"
         }],
         "snippets": [{
             "language": "asm",
             "path": "./snippets/6502.json"
         }],
         "configuration": [{
+            "title": "Assembler syntaxhighlight",
             "properties": {
-                
+                "automaticallySwitchToBuildInTheme": {
+                    "deprecationMessage": "This might be implemented in the future",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Automatically switch to the VASM (oldstyle) theme when opening a file with associated extension."
+                },
+                "vasm.compilerSettings": {
+                    "deprecationMessage": "This might be implemented in the future",
+                    "description": "Customize highlight options based on your VASM compiler settings."
+                },
+                "vasm.compilerSettings.esc": {
+                    "deprecationMessage": "This might be implemented in the future",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Treat \\ escaped characters similar to the C language."
+                },
+                "vasm.compilerSettings.noesc": {
+                    "deprecationMessage": "This might be implemented in the future",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Treat \\ as is."
+                },
+                "oldstyle.compilerSettings": {
+                    "deprecationMessage": "This might be implemented in the future",
+                    "description": "Customize highlight options based on your VASM (oldstyle) compiler settings."
+                },
+                "oldstyle.compilerSettings.dotdir": {
+                    "deprecationMessage": "This might be implemented in the future",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Directives have to be preceded by a dot."
+                },
+                "oldstyle.compilerSettings.sect": {
+                    "deprecationMessage": "This might be implemented in the future",
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Enables the additional section directives text, data and bss."
+                }
             }
         }]
     }

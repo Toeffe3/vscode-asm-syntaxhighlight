@@ -1,0 +1,162 @@
+{
+	"name": "Assembler",
+	"tokenColors": [
+		{
+			"name": "file",
+			"scope": [],
+			"settings": {}
+		},
+		{
+			"name": "unique",
+			"scope": "source.asm",
+			"settings": {}
+		},
+		{
+			"name": "error",
+			"scope": "error",
+			"settings": {
+				"foreground": "#FF0000",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "illegal",
+			"scope": "invalid.illegal",
+			"settings": {
+				"foreground": "#FF0000",
+				"fontStyle": "italic underline"
+			}
+		},
+		{
+			"name": "Comment",
+			"scope": "comment",
+			"settings": {
+				"fontStyle": "italic",
+				"foreground": "#546E7A"
+			}
+		},
+		{
+			"name": "Label",
+			"scope": "entity.name.label",
+			"settings": {
+				"fontStyle": "italic underline",
+				"foreground": "#4ac6ff"
+			}
+		},
+		{
+			"name": "Variable",
+			"scope": [
+				"entity.name.variable",
+				"variable.name"
+			],
+			"settings": {
+				"foreground": "#4ac6ff"
+			}
+		},
+		{
+			"name": "Directives",
+			"scope": [],
+			"settings": {}
+		},
+		{
+			"name": "Preprocessor",
+			"scope": "meta.preprocessor",
+			"settings": {
+				"foreground": "#7dffa8",
+				"fontStyle": "bold"
+			}
+		},
+		{
+			"name": "Data section",
+			"scope": "entity.name.section",
+			"settings": {
+				"foreground": "#7dffa8",
+				"fontStyle": ""
+			}
+		},
+		{
+			"name": "Instruction",
+			"scope": "keyword.control",
+			"settings": {
+				"foreground": "#cc00ff",
+				"fontStyle": "bold italic"
+			}
+		},
+		{
+			"name": "Userdefined",
+			"scope": "keyword.other",
+			"settings": {
+				"foreground": "#ff00dd",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "Immediate",
+			"scope": "storage.modifier",
+			"settings": {
+				"foreground": "#a3a000",
+				"fontStyle": "italic"
+			}
+		},
+		{
+			"name": "Constant",
+			"scope": [
+				"constant"
+			],
+			"settings": {
+				"foreground": "#f0ec00"
+			}
+		},
+		{
+			"name": "Address",
+			"scope": [
+				"constant.other.address"
+			],
+			"settings": {
+				"foreground": "#ffae00",
+				"fontStyle": "underline"
+			}
+		},
+		{
+			"name": "Instruction",
+			"scope": [
+				"support.function"
+			],
+			"settings": {
+				"foreground": "#cc00ff",
+				"fontStyle": "bold italic"
+			}
+		},
+		{
+			"name": "String",
+			"scope": [
+				"string.quoted"
+			],
+			"settings": {
+				"foreground": "#00a71c"
+			}
+		},
+		{
+			"name": "Path",
+			"scope": [
+				"string.path"
+			],
+			"settings": {
+				"foreground": "#fd73d4",
+				"fontStyle": "underline"
+			}
+		},
+		{
+			"name": "Preprocessor parameter",
+			"scope": [
+				"source.asm.preprocessor.parameter",
+				"source.asm.preprocessor.section",
+				"meta.preprocessor.parameter"
+			],
+			"settings": {
+				"foreground": "#89fad8",
+				"fontStyle": "bold"
+			}
+		}
+	]
+}
