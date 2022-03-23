@@ -15,10 +15,10 @@ Adds support for
 * Syntax highlighting:
     * VASM
         * Oldstyle flavor
-* Instructionsets:
+* Instruction sets:
    *  6502
 
-> This extension does not currently aim toward supporting your current syntax-highlighing theme
+> This extension does not aim toward supporting your current syntax-highlighing theme. At its current state, sublinetext's standards has been adabted to reasonable match assembly code, but many themes do not support many scopes. Therefor does this extension also ship with a theme that is designed to match the syntax-highlighting scopes to its full feature-set.
 
 ## Requirements
 
@@ -31,33 +31,3 @@ None yet
 ## Known Issues
 
 This is a bare bone extension in its current state, many features still lack and bugs is likly to appere. Please check issues tab in the GitHub repository.
-
-## Release Notes
-
-
-### [released] ALPHA 0.2.3
-
-* Numbers in labels
-* Tabs and spaces supported everywhere
-* Syntax scopes guided inline with more general scopes - improving compatibility with existing themes
-
-For convenience
-
-* ALL CAPS matches constant scope
-* all lowercase matches volatile memory address scope
-
-
-### [released] ALPHA 0.2.2
-* Same as 0.2.1
-
-### [available] 0.2.1
-* No optimazation
-* Syntax highlighting in adequeade state
-
-### [unreleased] 0.1.1
-* No optimazation
-* Syntax highlighting implemented 
-
-### [unreleased] 0.0.1
-* No optimazation
-* Support for file-extensions
