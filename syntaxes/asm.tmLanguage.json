@@ -1,172 +1,263 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"scopeName": "source.asm",
-	"foldingStartMarker": "^.+\\:$",
+	"foldingStartMarker": "^[^\\\t ]+$",
 	"foldingStopMarker": "^!(  |\\\t)$",
 	"patterns": [
-		{ "include": "#comment" },
-		{ "include": "#label" },
-		{ "include": "#sections" },
-		{ "include": "#directive" },
-		{ "include": "#expression" },
-		{ "include": "#userdefined" },
-		{ "include": "#constant" },
-		{ "include": "#address" }
+		{ "include": "#Comment" },
+		{ "include": "#Constant" },
+		{ "include": "#Label" },
+		{ "include": "#Preline" }
 	],
+
 	"repository": {
 
-		"comment": {
+		"Comment": {
 			"name": "comment.line.semi-colon",
-			"match": "\\s*;.*$"
+			"match": "(;).*$",
+			"captures": { "1": { "name": "punctuation.definition.comment" } }
 		},
 
-		"label": {
-			"match": "(?:^([0-9a-z_]+):)|(?:^([0-9a-z_]+) (macro)([^;]+)*)",
+		"Constant": {
+			"name": "source.asm.variable",
+			"match": "^([A-z0-9_]+)\\s*(=)(.*)$",
 			"captures": {
-				"1": {
-					"name": "meta.label"
-				},
-				"2": {
-					"name": "meta.constant"
-				},
+				"1": { "patterns": [
+					{
+						"name": "entity.name.variable",
+						"match": "^(?:(\\.[A-z0-9_]+)|([A-z0-9_]+))"
+					}
+				] },
+				"2": { "name": "punctuation.separator.variable" },
 				"3": {
-					"name": "meta.preprocessor"
-				},
-				"4": {
-					"name": "meta.parameter.type.variable"
+					"name": "source.asm.value",
+					"patterns": [ {
+						"match": "(.+?)\\s*(;.*)?$",
+						"captures": {
+							"1": { "patterns": [ { "include": "#Expression" } ] },
+							"2": { "patterns": [ { "include": "#Comment" } ] }
+						}
+					} ]
 				}
 			}
 		},
 
-		"constant": {
-			"match": "^([0-9A-Z_]+)\\s*=([^;]+)",
+		"Label": {
+			"name": "source.asm.label",
+			"match": "^([A-z0-9_]+)(\\:{,1})(.*)$",
 			"captures": {
-				"1": {
-					"name": "constant.asm"
-				},
-				"2": {
-					"patterns": [ { "include": "#parameters" } ]
+				"1": { "patterns": [
+					{
+						"name": "entity.name.label.local",
+						"match": "^(?:(\\.[A-z0-9_]+)|([A-z0-9_]+\\$))"
+					},
+					{
+						"name": "entity.name.label.global",
+						"match": "^[A-z0-9_]+:?"
+					}
+				] },
+				"2": { "name": "punctuation.separator.label" },
+				"3": {
+					"name": "source.asm.line",
+					"patterns": [ {
+						"match": "([^;]*?)(;.*)?$",
+						"captures": {
+							"1": { "patterns": [ { "include": "#Directive" } ] },
+							"2": { "patterns": [ { "include": "#Comment" } ] }
+						}
+					} ]
 				}
 			}
 		},
 
-		"address": {
-			"match": "^([0-9a-z_]+)\\s*=([^;]+)",
+		"Preline": {
+			"match": "^(\\\t|\\s)+([^;]+)",
 			"captures": {
-				"1": {
-					"name": "address.asm"
-				},
-				"2": {
-					"patterns": [ { "include": "#parameters" } ]
-				}
+				"1": { "name": "meta.indent" },
+				"2": { "patterns": [ { "include": "#Directive" } ] }
 			}
 		},
 
-		"parameters": {
-			"begin": " ",
-			"while": ",",
+		"Directive": {
+			"name": "source.asm.directive",
 			"patterns": [
-				{ "include": "#values" }
+				{
+					"match": "(2byte|4byte|8byte|asciiz|ascii|align|balignl|balignw|balign|byte|comm|double|endmacro|endm|endr|equ|equiv|err|extern|fail|file|float|global|half|ifeq|ifne|ifgt|ifge|iflt|ifle|ifb|ifnb|ifdef|ifndef|if|incbin|incdir|include|int|irpc|irp|lcomm|list|local|long|macro|nolist|org|p2alignw|p2align|popsection|pushsection|quad|rept|section|set|size|short|single|skip|space|stabs|stabn|stabd|string|swbeg|type|uahalf|ualong|uaquad|uasort|uaword|weak|word|zero)(.*)",
+					"captures": {
+						"1": { "name": "meta.preprocessor" },
+						"2": {
+							"name": "source.asm.preprocessor.parameter",
+							"patterns": [ { "include": "#Parameters" } ]
+						}
+					}
+				},
+				{
+					"match": "(bss|data|rodata|sbss|sdata|sdata2|stab|stabstr|text|tocd|dpage)(.*)",
+					"captures": {
+						"1": { "name": "entity.name.section" },
+						"2": {
+							"name": "source.asm.section.parameter",
+							"patterns": [ { "include": "#Parameters" } ]
+						}
+					}
+				},
+				{
+					"match": "(adc|and|asl|bbr0|bbr1|bbr2|bbr3|bbr4|bbr5|bbr6|bbr7|bbs0|bbs1|bbs2|bbs3|bbs4|bbs5|bbs6|bbs7|bcc|bcs|beq|bit|bmi|bne|bpl|bra|brk|bvc|bvs|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|jmp|jsr|lda|ldx|ldy|lsr|nop|ora|pha|php|phx|phy|pla|plp|plx|ply|rmb0|rmb1|rmb2|rmb3|rmb4|rmb5|rmb6|rmb7|rol|ror|rti|rts|sbc|sec|sed|sei|smb0|smb1|smb2|smb3|smb4|smb5|smb6|smb7|sta|stp|stx|sty|stz|tax|tay|trb|tsb|tsx|txa|txs|tya|wai)(.*)",
+					"captures": {
+						"1": { "name": "keyword.control" },
+						"2": {
+							"name": "source.asm.function.parameter",
+							"patterns": [ { "include": "#Parameters" } ]
+						}
+					}
+				},
+				{
+					"match": "([A-z0-9_]+)(.*)",
+					"captures": {
+						"1": { "name": "keyword.other" },
+						"2": {
+							"name": "source.asm.user.parameter",
+							"patterns": [ { "include": "#Parameters" } ]
+						}
+					}
+				}
 			]
 		},
 
-		"values": {
-			"match": "(#)([^;]*)|([^#][^;]+)",
-			"captures": {
-				"2": {
-					"name": "immediate.asm",
-					"patterns": [ { "include": "#values" } ]
+		"Parameters": {
+			"match": " ?(.*)",
+			"captures": { "1": { "patterns": [
+				{ "include": "#Parameterlist" },
+				{ "include": "#Expression" },
+				{ "include": "#ERRORBADPARAM" }
+			] } }
+		},
+
+		"Parameterlist": {
+			"begin": "((?!\")[^,]+)(,)(.*)",
+			"beginCaptures": {
+				"1": { 
+					"name": "source.asm.list",
+					"patterns": [ { "include": "#Expression" } ]
 				},
-				"3": {
-					"patterns": [
-						{
-							"name": "string.path",
-							"match": "([A-Z]\\:/)?([A-z0-9_ ]*/)+"
-						},
-						{
-							"name": "string.path.file",
-							"match": "([A-z0-9_ ]+\\.[A-z0-9]+)"
-						},
-						{
-							"name": "meta.parameter.type.variable",
-							"match": "\\\\[0-9A-z_]+"
-						},
-						{
-							"name": "constant.numeric.hex",
-							"match": "(\\$|0x)[0-9A-Fa-f]+"
-						},
-						{
-							"name": "constant.numeric.octal",
-							"match": "(0o)[0-8]+"
-						},
-						{
-							"name": "constant.numeric.binary",
-							"match": "(%|0b)[01]+"
-						},
-						{
-							"name": "constant.numeric.decimal",
-							"match": "(?!\\w)(\\d)+"
-						},
-						{
-							"name": "entity.name.section",
-							"match": "[0-9A-z_\\-]"
-						},
-						{
-							"name": "string.quoted",
-							"match": "\".*?\""
-						}
-					]
-				}
+				"2": { "name": "punctuation.separator" },
+				"3": { "patterns": [ { "include": "#Parameters" } ] }
 			}
 		},
 
-		"directive": {
-			"match": "(?:^  | |\\t)\\.?(2byte|4byte|8byte|asciiz|ascii|align|balignl|balignw|balign|byte|comm|double|endmacro|endm|endr|equ|equiv|err|extern|fail|file|float|global|half|ifeq|ifne|ifgt|ifge|iflt|ifle|ifb|ifnb|ifdef|ifndef|if|incbin|incdir|include|int|irpc|irp|lcomm|list|local|long|macro|nolist|org|p2alignw|p2align|popsection|pushsection|quad|rept|section|set|size|short|single|skip|space|stabs|stabn|stabd|string|swbeg|type|uahalf|ualong|uaquad|uasort|uaword|weak|word|zero)([^;]*)",
-			"captures": {
-				"1": {
-					"name": "meta.preprocessor"
-				},
-				"2": {
-					"patterns": [
-						{ "include": "#parameters" }
-					]
-				}
-			}
+		"Expression": {
+			"name": "source.asm.expression",
+			"patterns": [
+				{ "include": "#Value" },
+				{ "include": "#Operator" }
+			]
 		},
 
-		"sections": {
-			"name": "meta.storage.label",
-			"match": "^\\.?(bss|data|rodata|sbss|sdata|sdata2|stab|stabstr|text|tocd|dpage)([^;]*)",
-			"captures": {}
+		"Value": {
+			"name": "storage.type",
+			"patterns": [
+				{
+					"name": "storage.modifier",
+					"match": "#(.*)",
+					"captures": { "1": { "patterns": [
+						{ "include": "#Value" },
+						{ "include": "#Operator" }
+					] } }
+				},
+				{
+					"name": "string.path",
+					"match": "([A-Z]\\:/)?([A-z0-9_ ]*/)+"
+				},
+				{
+					"name": "string.path.file",
+					"match": "([A-z0-9_ ]+\\.[A-z0-9]+)"
+				},
+				{
+					"name": "meta.preprocessor.parameter",
+					"match": "\\\\[0-9A-z_]+"
+				},
+				{
+					"name": "constant.numeric.hex",
+					"match": "(\\$|0x)[0-9A-Fa-f]+"
+				},
+				{
+					"name": "constant.numeric.octal",
+					"match": "(@|0o)[0-8]+"
+				},
+				{
+					"name": "constant.numeric.binary",
+					"match": "(%|0b)[01]+"
+				},
+				{
+					"name": "constant.numeric",
+					"match": "[0-9]+"
+				},
+				{
+					"name": "constant.numeric.nbase",
+					"match": "[2-9]\\#[0-9]+"
+				},
+				{
+					"name": "constant.other",
+					"match": "[A-Z][A-Z0-9_]*"
+				},
+				{
+					"name": "variable.name",
+					"match": "[0-9A-z_\\-]+"
+				},
+				{
+					"name": "constant.character",
+					"match": "'.*?'"
+				},
+				{
+					"name": "string.quoted",
+					"match": "\".*?\""
+				}
+			]
 		},
 
-		"expression": {
-			"match": "(?:^  | |\\t)(adc|and|asl|bbr0|bbr1|bbr2|bbr3|bbr4|bbr5|bbr6|bbr7|bbs0|bbs1|bbs2|bbs3|bbs4|bbs5|bbs6|bbs7|bcc|bcs|beq|bit|bmi|bne|bpl|bra|brk|bvc|bvs|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|jmp|jsr|lda|ldx|ldy|lsr|nop|ora|pha|php|phx|phy|pla|plp|plx|ply|rmb0|rmb1|rmb2|rmb3|rmb4|rmb5|rmb6|rmb7|rol|ror|rti|rts|sbc|sec|sed|sei|smb0|smb1|smb2|smb3|smb4|smb5|smb6|smb7|sta|stp|stx|sty|stz|tax|tay|trb|tsb|tsx|txa|txs|tya|wai)([^;]*)",
-			"captures": {
-				"1": {
-					"name": "support.function"
+		"Operator": {
+			"patterns": [
+				{
+					"match": "(\\+|\\-|\\!|\\~)(?!\\+|\\-|\\!|\\~)(?! )(.+?)",
+					"captures": {
+						"1": { "name": "keyword.operator.unary" },
+						"2": { "patterns": [ { "include": "#Value" } ] }
+					}
 				},
-				"2": {
-					"patterns": [
-						{ "include": "#parameters" }
-					]
+				{
+					"match": "(.+?)(\\|\\||\\&\\&|\\<|\\>|\\<\\=|\\>\\=|\\=\\=|\\!\\=|\\<\\>|\\=)",
+					"captures": {
+						"1": { "patterns": [ { "include": "#Expression" } ] },
+						"2": { "name": "keyword.operator.locical" }
+					}
+				},
+				
+				{
+					"match": "(.+?)(\\&|\\||\\^|\\!\\~)",
+					"captures": {
+						"1": { "patterns": [ { "include": "#Expression" } ] },
+						"2": { "name": "keyword.operator.bitwise" }
+					}
+				},
+				{
+					"match": "(.+?) {0,1}(\\+|\\-|\\*|\\/|\\%|\\&|\\||\\^|\\~|\\<\\<|\\>\\>|\\/\\/) {0,1}",
+					"captures": {
+						"1": { "patterns": [ { "include": "#Expression" } ] },
+						"2": { "name": "keyword.operator.arithmetic" }
+					}
 				}
-			}
+			]
 		},
 
-		"userdefined": {
-			"match": "(?:^  |^\\t)(\\S+)( [^;]*)?",
-			"captures": {
-				"1": {
-					"name": "meta.tag"
-				},
-				"2": {
-					"patterns": [
-						{ "include": "#parameters" }
-					]
-				}
-			}
+		"Escaped": {
+			"name": "constant.character.escape",
+			"match": "(\\\\|\\b|\\f|\\n|\\r|\\t|\\\"|\\'|\\e|\\[0-8]+|\\(x|X)[0-9a-fA-F]+)"
+		},
+
+		"ERRORBADPARAM": {
+			"name": "testfor.error.badparam",
+			"match": "(?!,)(?:\\s+|\\s+(\\S+)\\s*)$",
+			"captures": { "1": { "name": "invalid.illegal" } }
 		}
-		
 	}
 }
