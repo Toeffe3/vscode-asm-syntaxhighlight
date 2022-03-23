@@ -1,6 +1,6 @@
 {
     "name": "asm-syntaxhighlight",
-    "version": "0.2.4",
+    "version": "0.3.0",
     "preview": true,
     "publisher": "Toeffe3",
     "homepage": "https://github.com/Toeffe3/vscode-asm-syntaxhighlight",
